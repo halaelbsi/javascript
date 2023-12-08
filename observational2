@@ -1,0 +1,48 @@
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  background(235, 119, 52);
+}
+
+function draw() {
+  noStroke();
+  // thread
+  fill(191, 185, 182);
+  rect(372, 1, 10, 270);
+  // leg 1
+  strokeWeight(10);
+  stroke(0);
+  line(347, 261, 231, 150);
+  line(231, 150, 109, 273);
+  // leg 2
+  line(330, 285, 242, 231);
+  line(242, 231, 96, 380);
+  // leg 3
+  line(332, 320, 226, 362);
+  line(226, 362, 110, 523);
+  // leg 4
+  line(345, 336, 255, 455);
+  line(255, 455, 347, 554);
+  // line 5
+  line(404, 259, 530, 150);
+  line(530, 150, 630, 273);
+  // leg 6
+  line(417, 285, 504, 231);
+  line(504, 231, 631, 380);
+  // leg 7
+  line(419, 311, 520, 362);
+  line(520, 362, 628, 523);
+  // leg 8
+  line(404, 336, 514, 455);
+  line(514, 455, 425, 554);
+  // face
+  fill(0);
+  ellipse(375, 300, 85);
+  // eyes
+  fill(255);
+  ellipse(355, 283, 25);
+  ellipse(395, 283, 25);
+  // mouth
+  noFill();
+  stroke(255);
+  arc(375, 310, 50, 40, 0, PI);
+}
