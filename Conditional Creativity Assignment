@@ -44,10 +44,16 @@ function drawBird() {
   noFill(); // sets no fill
   arc(birdX - 10, birdY, 20, 20, PI, 0);  // draws left wing
   arc(birdX + 10, birdY, 20, 20, PI, 0); // draws right wing
-
   // update bird's position
-  birdX = birdX + 1; // adjusts the speed
-
+  if (key === 'a') { // opens if statement
+    birdX = birdX + 0.5; // adjust speed
+  } else if (key === 'b') { // opens else if statement
+    birdX = birdX + 1; // adjust speed
+  } else if (key === 'ArrowRight') { // opens else if statement
+    birdX = birdX + 2; // adjust speed
+  } else { // opens else statement
+    birdX = birdX + 1; // adjust speed
+  } // closes else statement
   // reset bird's position when it goes off-screen
   if (birdX > width + 25) { // opens if statement
     birdX = -25; // resets birdX
