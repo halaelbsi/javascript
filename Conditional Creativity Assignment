@@ -1,0 +1,268 @@
+//state
+let morningMessage = "Good morning! Hold the mouse for it to become noon!";
+let daytimeMessage = "The sun is rising! Press the 'a' key for it to become daytime!";
+let showMessage = true;
+let birdX;
+let birdY;
+
+function setup() {
+  createCanvas(550, 400); //creates canvas
+  birdX = -25; //defines variable
+  birdY = height / 2; //defines variable
+}
+
+function draw() { // opens draw function
+  background(255); // sets background color
+  drawSky(); // calls drawSky function
+  drawGrass(); // calls drawGrass function
+  drawSun();  // calls drawSun function
+  drawClouds(); // calls drawClouds function
+  drawBird(); // calls drawBird function
+
+  handleKeyPress(); // calls handleKeyPress function
+  handleMousePress(); // calls handleMousePress function
+
+  if (showMessage) { //opens if statement
+    fill(242, 56, 5); // sets text color
+    textSize(15); // sets text size
+    textAlign(LEFT, BOTTOM); // sets text alignment
+    if (key === 'a') { // opens if statement
+      text(morningMessage, 125, 289); // sets text
+    } else if (key === 'b') { // opens else if statement
+      text("The sun is setting! Enjoy the view! Press the right arrow to go to sleep.", 20, 230); // sets text
+    } else if (key === 'ArrowRight') { // opens else if statement
+      text("Good night! Don't let the bed bugs bite! Press any key to wake up!", 100, 275); // sets text
+    } else { // opens else statement
+      text(daytimeMessage, 125, 289); // sets text
+    } // closes else statement
+  } // closes if statement
+} // closes draw function
+
+function drawBird() {
+  // draw bird wings (thin black arcs)
+  stroke(0); // sets stroke color
+  noFill(); // sets no fill
+  arc(birdX - 10, birdY, 20, 20, PI, 0);  // draws left wing
+  arc(birdX + 10, birdY, 20, 20, PI, 0); // draws right wing
+
+  // update bird's position
+  birdX = birdX + 1; // adjusts the speed
+
+  // reset bird's position when it goes off-screen
+  if (birdX > width + 25) { // opens if statement
+    birdX = -25; // resets birdX
+  } // closes if statement
+} // closes drawBird function
+
+function drawSky() { // opens drawSky function
+  noStroke(); // no stroke
+  // Draw the sky
+  fill(217, 64, 22); // sets fill color
+  rect(0, 190, 550, 70); // sets rectangle
+  fill(232, 78, 35); // sets fill color
+  rect(0, 170, 550, 70); // sets rectangle
+  fill(230, 108, 32); // sets fill color
+  rect(0, 166, 550, 70); // sets rectangle
+  fill(230, 110, 5); // sets fill color
+  rect(0, 166, 550, 30); // sets rectangle
+  fill(235, 111, 35); // sets fill color
+  rect(0, 0, 550, 170); // sets rectangle
+} // closes drawSky function
+
+function drawGrass() { // opens drawGrass function
+  // Draw the grass
+  noStroke(); // no stroke
+  fill(16, 94, 14); // sets fill color
+  rect(0, 259, 550, 200); // sets rectangle
+} // closes drawGrass function
+
+function drawSun() { // opens drawSun function
+  // Draw the sun 
+  fill(237, 53, 12); // sets fill color
+  circle(479, 209, 70); // sets circle
+} // closes drawSun function
+
+function drawClouds() { // opens drawClouds function
+  // Draw the clouds
+  noStroke(); // no stroke
+  fill(219, 129, 11); // sets fill color
+  ellipse(100, 100, 50, 50); // sets circle
+  ellipse(150, 100, 50, 50); // sets circle
+  ellipse(120, 90, 50, 50); // sets circle
+  ellipse(130, 110, 50, 50); // sets circle
+} // closes drawClouds function
+
+function handleKeyPress() { // opens handleKeyPress function
+  // Handle key press
+  if (key === 'a') { // opens if statement
+    showMessage = false; // sets showMessage to false
+    noStroke(); // no stroke
+    // grass brightens
+    fill(58, 168, 56); // sets fill color
+    rect(0, 259, 550, 200); // sets rectangle
+    // sky brightens
+    fill(80, 207, 230); // sets fill color
+    rect(0, 0, 550, 260); // sets rectangle
+    // sun moves
+    fill(255, 255, 0); // sets fill color
+    circle(361, 121, 70); // sets circle
+    // cloud turns white
+    noStroke(); // no stroke
+    fill(255); // sets fill color
+    ellipse(100, 100, 50, 50); // sets circle
+    ellipse(150, 100, 50, 50); // sets circle
+    ellipse(120, 90, 50, 50); // sets circle
+    ellipse(130, 110, 50, 50); // sets circle
+    // bird moves
+    drawBird(); // calls drawBird function
+  } // closes if statement
+
+  if (key === 'b') { // opens if statement
+    showMessage = false; // sets showMessage to false
+    // sky changes color
+    noStroke(); // no stroke
+    fill(217, 64, 22); // sets fill color
+    rect(0, 190, 550, 70); // sets rectangle
+    fill(232, 78, 35); // sets fill color
+    rect(0, 170, 550, 70); // sets rectangle
+    fill(230, 108, 32); // sets fill color
+    rect(0, 166, 550, 70); // sets rectangle
+    fill(230, 110, 5); // sets fill color
+    rect(0, 166, 550, 30); // sets rectangle
+    fill(235, 111, 35); // sets fill color
+    rect(0, 0, 550, 170); // sets rectangle
+    // grass changes color
+    fill(16, 94, 14); // sets fill color
+    rect(0, 259, 550, 200); // sets rectangle
+    // cloud changes color
+    fill(219, 129, 11); // sets fill color
+    ellipse(100, 100, 50, 50); // sets circle
+    ellipse(150, 100, 50, 50); // sets circle
+    ellipse(120, 90, 50, 50); // sets circle
+    ellipse(130, 110, 50, 50); // sets circle
+    // sun darkens
+    fill(237, 53, 12); // sets fill color
+    circle(85, 150, 70); // sets circle
+    // flower
+    // draw stem
+    fill(34, 139, 34); // sets fill color
+    rect(345, 300, 10, 60); // sets rectangle
+    // draw petals
+    fill(222, 122, 222); // sets fill color
+    ellipse(335, 285, 30, 30); // sets circle
+    ellipse(350, 270, 30, 30); // sets circle
+    ellipse(365, 286, 30, 30); // sets circle
+    ellipse(350, 300, 30, 30); // sets circle
+    // draw flower center
+    fill(240, 151, 19); // sets fill color
+    ellipse(350, 285, 20, 20); // sets circle
+    // bird
+    drawBird(); // calls drawBird function
+  } // closes if statement
+
+  if (key === 'ArrowRight') { // opens if statement
+    // sky
+    noStroke(); // no stroke
+    fill(39, 39, 59); // sets fill color
+    rect(0, 0, 550, 260); // sets rectangle
+    // moon
+    fill(179, 169, 166); // sets fill color
+    circle(230, 90, 70); // sets circle
+    // grass darkens
+    fill(17, 41, 14); // sets fill color
+    rect(0, 259, 550, 200); // sets rectangle
+    // draw stars
+    fill(255); // sets fill color
+    circle(100, 198, 5); // sets circle
+    circle(150, 109, 5); // sets circle
+    circle(120, 99, 5); // sets circle
+    circle(130, 123, 5); // sets circle
+    circle(100, 138, 5); // sets circle
+    circle(310, 129, 5); // sets circle
+    circle(367, 145, 5); // sets circle
+    circle(319, 93, 5); // sets circle
+    circle(325, 106, 5); // sets circle
+    circle(390, 148, 5); // sets circle
+    circle(440, 68, 5); // sets circle
+    circle(420, 99, 5); // sets circle
+    circle(410, 80, 5); // sets circle
+    circle(434, 170, 5); // sets circle
+    circle(487, 100, 5); // sets circle
+    circle(220, 184, 5); // sets circle
+    circle(202, 256, 5); // sets circle
+    circle(190, 201, 5); // sets circle
+    circle(227, 172, 5); // sets circle
+    circle(287, 132, 5); // sets circle
+    circle(245, 245, 5); // sets circle
+    circle(350, 189, 5); // sets circle
+    circle(336, 204, 5); // sets circle
+    circle(376, 223, 5); // sets circle
+    // bird  
+    drawBird(); // calls drawBird function
+  } // closes if statement
+} // closes handleKeyPress function
+
+function handleMousePress() { // opens handleMousePress function
+  if (mouseIsPressed) { // opens if statement
+    showMessage = false; // sets showMessage to false
+    // sky brightens
+    noStroke(); // no stroke
+    fill(80, 207, 230); // sets fill color
+    rect(0, 0, 550, 260); // sets rectangle
+    // sun moves
+    fill(255, 255, 0); // sets fill color
+    circle(275, 96, 70); // sets circle
+    // cloud
+    fill(255); // sets fill color
+    ellipse(360, 110, 50, 50); // sets circle
+    ellipse(410, 110, 50, 50); // sets circle
+    ellipse(380, 90, 50, 50); // sets circle
+    ellipse(390, 120, 50, 50); // sets circle
+    // cloud turns white
+    noStroke(); // no stroke
+    fill(255); // sets fill color
+    ellipse(100, 100, 50, 50); // sets circle
+    ellipse(150, 100, 50, 50); // sets circle
+    ellipse(120, 90, 50, 50); // sets circle
+    ellipse(130, 110, 50, 50); // sets circle
+    // grass brightens
+    fill(58, 168, 56); // sets fill color
+    rect(0, 259, 550, 200); // sets rectangle
+    // flower
+    // draw stem
+    fill(34, 139, 34); // sets fill color
+    rect(91, 313, 10, 60); // sets rectangle
+    // draw petals
+    fill(173, 127, 219); // sets fill color
+    ellipse(80, 300, 30, 30); // sets circle
+    ellipse(95, 284, 30, 30); // sets circle
+    ellipse(112, 300, 30, 30); // sets circle
+    ellipse(95, 315, 30, 30); // sets circle
+    // draw flower center
+    fill(255, 255, 0); // sets fill color
+    ellipse(96, 300, 20, 20); // sets circle
+    fill(242, 56, 5); // sets fill color
+    textSize(15); // sets text size
+    noStroke(); // no stroke
+    textAlign(LEFT, BOTTOM); // sets text alignment
+    text("Quick! The sun is going to set! Press 'b'!", 135, 289); // sets text
+    // bird
+    drawBird(); // calls drawBird function
+  } else { // opens else statement
+    showMessage = true; // sets showMessage to true
+    // flower
+    // draw stem
+    noStroke(); // no stroke
+    fill(34, 139, 34); // sets fill color
+    rect(91, 313, 10, 60); // sets rectangle
+    // draw petals
+    fill(222, 13, 58); // sets fill color
+    ellipse(80, 300, 30, 30); // sets circle
+    ellipse(95, 284, 30, 30); // sets circle
+    ellipse(112, 300, 30, 30); // sets circle
+    ellipse(95, 315, 30, 30); // sets circle
+    // draw flower center
+    fill(240, 151, 19); // sets fill color
+    ellipse(96, 300, 20, 20); // sets circle
+  } // closes else statement
+} // closes handleMousePress function
