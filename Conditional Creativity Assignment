@@ -1,3 +1,4 @@
+// this code reflects the stages of the sun during sunrise, daytime, noon, sunset, and nighttime. It includes various conditional statements that permit for user interaction, as well as an animation that changes when the user interacts. I chose to do this because I find watching the sky to be a very joyful thing to do as it makes me feel peaceful.
 //state
 let morningMessage = "Good morning! Hold the mouse for it to become noon!";
 let daytimeMessage = "The sun is rising! Press the 'a' key for it to become daytime!";
@@ -22,6 +23,7 @@ function draw() { // opens draw function
   handleKeyPress(); // calls handleKeyPress function
   handleMousePress(); // calls handleMousePress function
 
+// this conditional statement shows the text that will appear on the screen depending on which key is pressed
   if (showMessage) { //opens if statement
     fill(242, 56, 5); // sets text color
     textSize(15); // sets text size
@@ -45,6 +47,7 @@ function drawBird() {
   arc(birdX - 10, birdY, 20, 20, PI, 0);  // draws left wing
   arc(birdX + 10, birdY, 20, 20, PI, 0); // draws right wing
   // update bird's position
+// this conditional statement changes the speed of the bird depending on the keys pressed
   if (key === 'a') { // opens if statement
     birdX = birdX + 0.5; // adjust speed
   } else if (key === 'b') { // opens else if statement
@@ -100,6 +103,7 @@ function drawClouds() { // opens drawClouds function
 
 function handleKeyPress() { // opens handleKeyPress function
   // Handle key press
+// this conditional statement shows will will appear on the screen when 'a' is pressed
   if (key === 'a') { // opens if statement
     showMessage = false; // sets showMessage to false
     noStroke(); // no stroke
@@ -123,6 +127,7 @@ function handleKeyPress() { // opens handleKeyPress function
     drawBird(); // calls drawBird function
   } // closes if statement
 
+// this conditional statement shows what will appear on the screen when 'b' is pressed
   if (key === 'b') { // opens if statement
     showMessage = false; // sets showMessage to false
     // sky changes color
@@ -166,6 +171,7 @@ function handleKeyPress() { // opens handleKeyPress function
     drawBird(); // calls drawBird function
   } // closes if statement
 
+// this conditional statement shows what will appear on the screen when the right arrow is pressed
   if (key === 'ArrowRight') { // opens if statement
     // sky
     noStroke(); // no stroke
@@ -209,6 +215,7 @@ function handleKeyPress() { // opens handleKeyPress function
 } // closes handleKeyPress function
 
 function handleMousePress() { // opens handleMousePress function
+// this conditional statement shows what will appear on screen when the mouse is pressed, and what will be on screen when it is released (not pressed)
   if (mouseIsPressed) { // opens if statement
     showMessage = false; // sets showMessage to false
     // sky brightens
